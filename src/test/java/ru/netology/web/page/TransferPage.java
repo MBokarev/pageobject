@@ -3,6 +3,8 @@ package ru.netology.web.page;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.web.data.DataHelper;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.valueOf;
 
@@ -16,5 +18,13 @@ public class TransferPage {
         fromField.setValue(valueOf(from));
         transferButton.click();
         return new DashboardPage();
+    }
+
+    public void getLimitExceededError() {
+        $(byText("Ошибка! Сумма перевода превышает допустимый лимит!")).shouldBe(visible);
+    }
+
+    public void getErrorInvalidCard() {
+        $(byText("Ошибка! Номер карты для зачисления совпадает с номером карты для списания!")).shouldBe(visible);
     }
 }
