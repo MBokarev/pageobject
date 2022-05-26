@@ -71,7 +71,7 @@ public class MoneyTransferTest {
         Configuration.holdBrowserOpen = true;
         int amount = 1000;
         val transactionPage = pushFirstCardButton();
-        transactionPage.transferMoney(amount, getSecondCardNumber());
+        transactionPage.transferMoney(amount, getFirstCardNumber());
         transactionPage.getErrorInvalidCard();
     }
 }
